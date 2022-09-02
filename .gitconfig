@@ -1,0 +1,31 @@
+[user]
+	email = dmitry.nazarov@corp.mail.ru
+	name = dmitry.nazarov
+[includeIf "gitdir:~/dev/learning/"]       # For Work folder
+	path = ~/dev/learning/.gitconfig 
+[core]
+	excludesfile = /Users/dmitry.nazarov/.gitignore
+	autocrlf = input
+	safecrlf = warn
+[alias]
+	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+	co = checkout
+	cob = !git checkout master && git pull && git checkout -b
+	ci = commit
+	br = branch
+	type = cat-file -p
+
+	cma = !git add -A && git commit -m
+	save = !git add -A && git commit -m 'SAVEPOINT'
+	wip = commit -am "WIP"
+	undo = reset HEAD~1 --mixed
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = /Users/dmitry.nazarov/.stCommitMsg
+[pgp]
+	program = /usr/local/MacGPG2/bin/gpg
